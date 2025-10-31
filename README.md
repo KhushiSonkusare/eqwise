@@ -26,6 +26,18 @@ A comprehensive Python project for analyzing large-scale stock market data and c
 - **MACD**: Moving Average Convergence Divergence with signal line and histogram
 - **Volume Analysis**: Volume ratio and 20-day volume moving average
 
+## 🚀 Enhanced Features (NEW!)
+
+- **Multiprocessing**: Parallel processing using all CPU cores
+- **Checkpointing**: Save progress and resume if interrupted
+- **ML Features**: 
+  - Returns (1-period and 5-period)
+  - Binary targets (next period up/down)
+  - Lagged indicators (1, 2, 3, 5 periods)
+- **Data Resampling**: Convert minute data to 15-minute OHLCV candles
+- **Multiple Output Formats**: Pickle + Parquet (compressed)
+- **Advanced Memory Management**: Chunked processing with cleanup
+
 ## 📁 Project Structure
 
 ```
@@ -111,6 +123,17 @@ python indicators/main_sample.py
 ```
 - Works with smaller sample datasets
 - Perfect for development and testing
+
+#### Option 5: Enhanced Processing (NEW!)
+```bash
+python main_enhanced.py
+```
+- **Multiprocessing**: Parallel processing with multiple CPU cores
+- **Checkpointing**: Resume processing if interrupted
+- **ML Features**: Returns, targets, lagged indicators
+- **Multiple Formats**: Saves both Pickle and Parquet formats
+- **Memory Optimized**: Advanced memory management
+- **Configurable**: Easy to customize processing options
 
 ## 📈 Memory Management
 

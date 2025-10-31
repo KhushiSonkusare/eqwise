@@ -191,6 +191,7 @@ secrets.json
 .secrets
 
 # Virtual environment
+venv321/
 venv/
 env/
 ENV/
