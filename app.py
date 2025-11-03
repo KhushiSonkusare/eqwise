@@ -238,11 +238,23 @@ if uploaded_file is not None:
             st.plotly_chart(fig_pie, use_container_width=True)
         
         with col2:
-            signal_df = pd.DataFrame({
-                'Signal': signal_counts.index,
-                'Count': signal_counts.values,
-                'Percentage': (signal_counts.values / len(df) * 100).round(2)
-            })
+            # Calculate accuracy for each signal type
+            signal_stats = []
+            for signal in signal_counts.index:
+                signal_mask = df['combined_signal'] == signal
+                signal_total = signal_mask.sum()
+                signal_correct = df.loc[signal_mask, 'correct'].sum()
+                signal_acc = (signal_correct / signal_total * 100) if signal_total > 0 else 0
+                
+                signal_stats.append({
+                    'Signal': signal,
+                    'Count': signal_total,
+                    'Percentage': (signal_total / len(df) * 100).round(2),
+                    'Correct': signal_correct,
+                    'Accuracy': f"{signal_acc:.2f}%"
+                })
+            
+            signal_df = pd.DataFrame(signal_stats)
             st.dataframe(signal_df, use_container_width=True)
         
         # Main visualization
